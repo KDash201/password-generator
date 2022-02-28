@@ -11,8 +11,10 @@
 // GENERATE password that matched the criteria
 // Display password in an alert box or within the INNERTEXT of the html page
 
+// generate password button
 const generateBtn = document.querySelector("#generate");
 
+//  generates the password
 function generatePassword() {
   let criteria = "";
 
@@ -64,11 +66,10 @@ function generatePassword() {
   }
 }
 
-
-
+// writes the password on the page
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
   console.log("passwordText Value; ", passwordText.value);
@@ -78,5 +79,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// writePassword();
