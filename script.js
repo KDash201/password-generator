@@ -14,48 +14,60 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var options = promptMe();
-  console.log(generateBtn)
+  var criteria = "";
 
-}
-
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-  console.log("passwordText Value; ", passwordText.value);
-
-}
+  var askPasswordLength = prompt("Choose the length of password between 8 to 128 characters");
+  if (askPasswordLength >= 8 && askPasswordLength <= 128) {
+    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
+    console.log(askLowerCase);
+    var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
+    console.log(askUpperCase);
+    var askNumChar = confirm('Click ok to confirm if you want to include numbers');
+    console.log(askNumChar);
 
 
-//var passwordText = document.querySelector("#password");
-//console.log(passwordText);
-
-//function writePassword() {
-//  var passwordOptions = {
-//    lower: randomLower,
-//    upper: randomUpper,
-//    number: randomNumber,
-//    symbol: randomSymbol,
-//  }
-//}
-//console.log(writePassword());
-
-function promptMe() {
-  var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
-  if (askLowerCase);
-
-  var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
-  var askNumChar = confirm('Click ok to confirm if you want to include numbers');
-  var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
-  var askNumLength = prompt("Choose the length of password between 8 to 128 characters");
-
-
-  if (askNumLength < 8 && askNumLength > 128) {
     alert("Password length must a number between 8 and 128");
     return promptMe();
+
+    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
+
+
+  }
+
+
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+    console.log("passwordText Value; ", passwordText.value);
+
+  }
+
+
+  //var passwordText = document.querySelector("#password");
+  //console.log(passwordText);
+
+  //function writePassword() {
+  //  var passwordcriteria = {
+  //    lower: randomLower,
+  //    upper: randomUpper,
+  //    number: randomNumber,
+  //    symbol: randomSymbol,
+  //  }
+  //}
+  //console.log(writePassword());
+
+  function promptMe() {
+    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
+    if (askLowerCase);
+
+    var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
+    var askNumChar = confirm('Click ok to confirm if you want to include numbers');
+    var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
+
+
+
   }
 }
 
