@@ -24,14 +24,14 @@ function generatePassword() {
     console.log(askUpperCase);
     var askNumChar = confirm('Click ok to confirm if you want to include numbers');
     console.log(askNumChar);
+    var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
+    console.log(askSpecialChar);
 
+    if (askLowerCase || askUpperCase || askNumChar || askSpecialChar)
+      for (i = 0; i < askPasswordLength; i++)
+        if (askLowerCase && criteria.length < askPasswordLength) {
 
-    alert("Password length must a number between 8 and 128");
-    return promptMe();
-
-    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
-
-
+        }
   }
 
 
