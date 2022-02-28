@@ -11,65 +11,96 @@
 // GENERATE password that matched the criteria
 // Display password in an alert box or within the INNERTEXT of the html page
 
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var criteria = "";
+  let criteria = "";
 
-  var askPasswordLength = prompt("Choose the length of password between 8 to 128 characters");
+  let askPasswordLength = prompt("Choose the length of password between 8 to 128 characters");
   if (askPasswordLength >= 8 && askPasswordLength <= 128) {
-    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
+    const askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
     console.log(askLowerCase);
-    var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
+    const askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
     console.log(askUpperCase);
-    var askNumChar = confirm('Click ok to confirm if you want to include numbers');
+    const askNumChar = confirm('Click ok to confirm if you want to include numbers');
     console.log(askNumChar);
-    var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
+    const askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
     console.log(askSpecialChar);
 
     if (askLowerCase || askUpperCase || askNumChar || askSpecialChar)
-      for (i = 0; i < askPasswordLength; i++)
+      for (i = 0; i < askPasswordLength; i++) {
         if (askLowerCase && criteria.length < askPasswordLength) {
-
+          var randomNumber = Math.floor(Math.random() * 26 + 97);
+          console.log(randomNumber);
+          criteria = criteria + String.fromCharCode(randomNumber)
         }
-  }
 
+        if (askUpperCase && criteria.length < askPasswordLength) {
+          var randomNumber = Math.floor(Math.random() * 26 + 65);
+          console.log(randomNumber);
+          criteria = criteria + String.fromCharCode(randomNumber)
+        }
 
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+        if (askNumChar && criteria.length < askPasswordLength) {
+          var randomNumber = Math.floor(Math.random() * 10 + 65);
+          console.log(randomNumber);
+          criteria = criteria + String.fromCharCode(randomNumber)
 
-    passwordText.value = password;
-    console.log("passwordText Value; ", passwordText.value);
+          if (askSpecialChar && criteria.length < askPasswordLength) {
+            var randomNumber = Math.floor(Math.random() * 14 + 33);
+            console.log(randomNumber);
+            criteria = criteria + String.fromCharCode(randomNumber)
+          }
+        }
+        return criteria;
+      } else {
+      alert("Please enter at one of the chraracter criteria that is required!")
+      return "Error";
+    }
 
-  }
-
-
-  //var passwordText = document.querySelector("#password");
-  //console.log(passwordText);
-
-  //function writePassword() {
-  //  var passwordcriteria = {
-  //    lower: randomLower,
-  //    upper: randomUpper,
-  //    number: randomNumber,
-  //    symbol: randomSymbol,
-  //  }
-  //}
-  //console.log(writePassword());
-
-  function promptMe() {
-    var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
-    if (askLowerCase);
-
-    var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
-    var askNumChar = confirm('Click ok to confirm if you want to include numbers');
-    var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
-
-
-
+  } else {
+    alert("Please select the correct password criteria!")
+    return "Error";
   }
 }
+
+
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  console.log("passwordText Value; ", passwordText.value);
+
+}
+
+
+//var passwordText = document.querySelector("#password");
+//console.log(passwordText);
+
+//function writePassword() {
+//  var passwordcriteria = {
+//    lower: randomLower,
+//    upper: randomUpper,
+//    number: randomNumber,
+//    symbol: randomSymbol,
+//  }
+//}
+//console.log(writePassword());
+
+function promptMe() {
+  var askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
+  if (askLowerCase);
+
+  var askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
+  var askNumChar = confirm('Click ok to confirm if you want to include numbers');
+  var askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
+
+
+
+}
+
 
 
 
@@ -107,7 +138,6 @@ var inputRandomSymbol = function () {
 }
 console.log(inputRandomSymbol());
 
-var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
   var password = generatePassword();
