@@ -12,70 +12,84 @@
 // Display password in an alert box or within the INNERTEXT of the html page
 
 // generate password button
-const generateBtn = document.querySelector("#generate");
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUZWXYZ";
+const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+const num = "0123456789";
+const symbols = "!#$%&'()*+,-./:;<=>?@[^_`{|}~";
 
-//  generates the password
+// Query Selectors
+let passwordText = document.querySelector("#password");
+let generateBtn = document.querySelector("#generate");
+
+// Event Listeners
+generateBtn.addEventListener("click", generatePassword);
+
+//User input with prompts for incorrect data entry.
 function generatePassword() {
-  let criteria = "";
+  let newPassword = "";
+  let characters = "";
 
-  let askPasswordLength = prompt("Choose the length of password between 8 to 128 characters");
-  if (askPasswordLength >= 8 && askPasswordLength <= 128) {
-    const askLowerCase = confirm('Click ok to confirm if you want to include lower case characters');
-    console.log(askLowerCase);
-    const askUpperCase = confirm('Click ok to confirm if you want to include upper case characters');
-    console.log(askUpperCase);
-    const askNumChar = confirm('Click ok to confirm if you want to include numbers');
-    console.log(askNumChar);
-    const askSpecialChar = confirm('Click ok to confirm if you want to include special characters');
+  let askPasswordLength = prompt(
+    "Choose the length of password between 8 to 128 characters"
+  );
+
+  if (
+    Number(askPasswordLength < 8) ||
+    Number(askPasswordLength > 128) ||
+    isNaN(askPasswordLength)
+  ) {
+    alert("Must be between 8 and 128 characters.");
+    return;
+  }
+  let askUpperCase = confirm(
+    "Click ok to confirm if you want to include upper case characters"
+  );
+
+  if (askUpperCase) {
+    characters += upperCase;
+  }
+
+  let askLowerCase = confirm(
+    "Click ok to confirm if you want to include upper case characters"
+  );
+
+  if (askLowerCase) {
+    characters += lowerCase;
+  }
+
+  let askNumChar = confirm(
+    "Click ok to confirm if you want to include numbers"
+  );
+
+  if (askNumChar) {
+    characters += num;
+  }
+
+  let askSpecialChar = confirm(
+    "Click ok to confirm if you want to include special characters"
+  );
+
+  if (askSpecialChar) {
+    characters += symbols;
     console.log(askSpecialChar);
+  }
 
-    if (askLowerCase || askUpperCase || askNumChar || askSpecialChar)
-      for (i = 0; i < askPasswordLength; i++) {
-        if (askLowerCase && criteria.length < askPasswordLength) {
-          var randomNumber = Math.floor(Math.random() * 26 + 97);
-          console.log(randomNumber);
-          criteria = criteria + String.fromCharCode(randomNumber)
-        }
+  // If no options are selected
+  if (characters === "") {
+    alert("Please enter at one of the chraracter criteria that is required!");
+  }
 
-        if (askUpperCase && criteria.length < askPasswordLength) {
-          var randomNumber = Math.floor(Math.random() * 26 + 65);
-          console.log(randomNumber);
-          criteria = criteria + String.fromCharCode(randomNumber)
-        }
-
-        if (askNumChar && criteria.length < askPasswordLength) {
-          var randomNumber = Math.floor(Math.random() * 10 + 65);
-          console.log(randomNumber);
-          criteria = criteria + String.fromCharCode(randomNumber)
-
-          if (askSpecialChar && criteria.length < askPasswordLength) {
-            var randomNumber = Math.floor(Math.random() * 14 + 33);
-            console.log(randomNumber);
-            criteria = criteria + String.fromCharCode(randomNumber)
-          }
-        }
-        return criteria;
-      } else {
-      alert("Please enter at one of the chraracter criteria that is required!")
-      return "Error";
+  // For loop to  password
+  if (Number(askPasswordLength >= 8) && Number(askPasswordLength <= 128)) {
+    for (var i = 0; i < askPasswordLength; i++) {
+      newPassword += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
     }
 
-  } else {
-    alert("Please select the correct password criteria!")
-    return "Error";
+    let password = generatePassword();
+    let passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
   }
 }
-
-// writes the password on the page
-function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-  console.log("passwordText Value; ", passwordText.value);
-
-}
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
