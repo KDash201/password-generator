@@ -15,3 +15,9 @@ This application provides users with the ability to generator a random password
 -Click generate password
 -Go through the prompts for the password criteria you prefer
 -After all of the prompts the password will generate onto the browser.
+
+## Screenshot
+
+<img src->
+
+![picture of auto readme app](HomePage.png)
