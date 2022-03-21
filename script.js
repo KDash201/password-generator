@@ -87,9 +87,11 @@ function generatePassword() {
       );
     }
 
-    let password = generatePassword();
-    let passwordText = document.querySelector("#password");
+    // let password = generatePassword();
+    // let passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
+    // passwordText.value = password;
   }
+  passwordText.textContent = newPassword;
+  console.log(newPassword);
 }
